@@ -1,4 +1,4 @@
-export type LoginRequest = {
+export type LoginResponse = {
     name: string,
     email: string,
     token: string

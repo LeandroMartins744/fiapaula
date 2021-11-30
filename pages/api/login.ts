@@ -5,6 +5,7 @@ import { UserModel } from '../../models/UserModel';
 import { DefaultResponseMsg } from '../../types/DefaultResponseMsg';
 import { LoginRequest } from '../../types/LoginRequest';
 import jwt from 'jsonwebtoken';
+import { LoginResponse } from '../../types/LoginResponse';
 
 
 const loginEndPoint = async(req: NextApiRequest, res: NextApiResponse<DefaultResponseMsg | LoginResponse>) => {
