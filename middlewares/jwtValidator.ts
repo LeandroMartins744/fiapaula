@@ -1,8 +1,5 @@
 import type { NextApiRequest, NextApiResponse, NextApiHandler } from 'next';
-import mongoose from 'mongoose';
 import { DefaultResponseMsg } from '../types/DefaultResponseMsg';
-import { debug, error } from 'console';
-import { redirect } from 'next/dist/server/api-utils';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 
 export const jwtValidator = (handler: NextApiHandler) =>

@@ -1,5 +1,5 @@
 export type GetTasksParams = {
-    previsionDateStatus?: string,
-    prevprevisionDateEnd?: string,
+    previsionDateStart?: string,
+    previsionDateEnd?: string,
     status?: string
 }
