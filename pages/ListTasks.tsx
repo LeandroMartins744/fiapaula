@@ -2,8 +2,9 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react';
 import { Home } from '../containers/Home';
 import { Login} from '../containers/Login'
+import {ListData} from "../containers/ListData";
 
-const Index: NextPage = () => {
+const ListTasks: NextPage = () => {
   const [accessToken, setToken] = useState('');
   useEffect(() => {
     if(typeof window !== 'undefined'){
@@ -15,8 +16,8 @@ const Index: NextPage = () => {
   }, [])
 
   return (
-    accessToken ? <Home setToken={setToken} /> : <Login setToken={setToken}/>
+    accessToken ? <ListData setToken={setToken} /> : <Login setToken={setToken}/>
   )
 }
 
-export default Index
+export default ListTasks

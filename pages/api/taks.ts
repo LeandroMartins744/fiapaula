@@ -11,19 +11,19 @@ import { GetTasksParams } from '../../types/GetTaksParams';
 const taskEndpoint = async (req: NextApiRequest, res: NextApiResponse<DefaultResponseMsg | any>) => {
 
     const { userId } = req?.body || req?.query;
-
-    switch (req.method) {
-        case 'POST':
-            return await saveTask(req, res, userId);
-        case 'PUT':
-            return await updateTask(req, res, userId);
-        case 'DELETE':
-            return await deleteTask(req, res, userId);
-        case 'GET':
-            return await getTasks(req, res, userId);
-        default:
-            return res.status(405).json({ error: 'Metodo infomado não é valido' });
-    }
+    return res.status(405).json({ error: 'Metodo infomado não é valido' });
+    // switch (req.method) {
+    //     case 'POST':
+    //         return await saveTask(req, res, userId);
+    //     case 'PUT':
+    //         return await updateTask(req, res, userId);
+    //     case 'DELETE':
+    //         return await deleteTask(req, res, userId);
+    //     case 'GET':
+    //         return await getTasks(req, res, userId);
+    //     default:
+    //         return res.status(405).json({ error: 'Metodo infomado não é valido' });
+    // }
 }
 
 const validateBody = (body : TaskRequest, userId : string) => {
@@ -39,7 +39,7 @@ const validateBody = (body : TaskRequest, userId : string) => {
         return 'Data inválida';
     }
 }
-
+/*
 const saveTask = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
     const body = req.body as TaskRequest;
 
@@ -65,6 +65,8 @@ const saveTask = async (req: NextApiRequest, res: NextApiResponse, userId: strin
     return res.status(200).json({ msg: 'Tarefa Criada' });
 }
 
+ */
+/*
 const updateTask = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
     const body = req.body as TaskRequest;
 
@@ -84,7 +86,7 @@ const updateTask = async (req: NextApiRequest, res: NextApiResponse, userId: str
     }
 
     const previsionDate = moment(body.previsionDate);
-    
+
     task.name = body.name;
     task.previsionDate = previsionDate;
     task.finishDate = body.finishDate ? moment(body.finishDate) : null;
@@ -93,6 +95,10 @@ const updateTask = async (req: NextApiRequest, res: NextApiResponse, userId: str
     return res.status(200).json({ msg: 'Tarefa Alterada' });
 }
 
+
+ */
+
+/*
 const deleteTask = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
     const taskId = req?.query?.id;
     if (!taskId) {
@@ -108,8 +114,10 @@ const deleteTask = async (req: NextApiRequest, res: NextApiResponse, userId: str
     return res.status(200).json({ msg: 'Tarefa Deletada' });
 }
 
+ */
+/*
 const getTasks = async (req: NextApiRequest, res: NextApiResponse, userId: string) => {
-   
+
     const params =  req.query as GetTasksParams;
 
     const query = {
@@ -123,7 +131,7 @@ const getTasks = async (req: NextApiRequest, res: NextApiResponse, userId: strin
 
     if(params?.previsionDateEnd){
         const endDate = moment(params?.previsionDateEnd).toDate();
-        
+
         if(!query.previsionDate){
             query.previsionDate = {}
         }
@@ -143,5 +151,7 @@ const getTasks = async (req: NextApiRequest, res: NextApiResponse, userId: strin
     const result = await TaskModel.find(query);
     return res.status(200).json(result);
 }
+
+ */
 
 export default connectionDB(jwtValidator(taskEndpoint));
